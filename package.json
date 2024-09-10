@@ -1,0 +1,30 @@
+{
+  "name": "videosdk-js-app",
+  "version": "1.0.0",
+  "module": "src/index.js",
+  "author": "Kelly J Andrews",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@squaresapp/rawjs": "^1.3.19",
+    "@zoom/videosdk": "^1.11.10",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "jsrsasign": "^11.1.0"
+  },
+  "scripts": {
+    "dev": "nodemon ./src",
+    "start": "node ./src"
+  },
+  "devDependencies": {
+    "eslint": "^9.8.0",
+    "eslint-config-alloy": "^5.1.2",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+        "nodemon": "^3.1.4"
+
+  }
+}
