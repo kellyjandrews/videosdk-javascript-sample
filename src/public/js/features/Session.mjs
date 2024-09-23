@@ -42,25 +42,25 @@ export default class Session {
     client.on('user-added', (data) => publish('USER_ADDED', data));
     client.on('user-removed', (data) => (data.length > 0 ? publish('USER_REMOVED', data) : null));
     client.on('user-updated', (data) => publish('user-updated', data));
-
-    document.getElementById('leave-button').addEventListener('click', this.leaveSession);
   };
 
-  joinSession = async () => {
+  join = async () => {
     let { sessionName, signature, displayName } = this.sessionData;
 
     this.session = await client.join(sessionName, signature, displayName);
     this.stream = await client.getMediaStream();
     this.devices = await VideoSDK.getDevices();
 
-    new Video(this.devices.filter((device) => device.kind === 'videoinput'));
-
-    new Audio(this.devices.filter((device) => device.kind === 'audioinput' || device.kind === 'audiooutput'));
+    this.video = new Video(this.devices.filter((device) => device.kind === 'videoinput'));
+    this.audio = new Audio({
+      audioInput: this.devices.filter((device) => device.kind === 'audioinput'),
+      audioOutput: this.devices.filter((device) => device.kind === 'audiooutput')
+    });
 
     return this;
   };
 
-  leaveSession = async () => {
+  leave = async () => {
     console.log('leaving session');
     client.leave();
     VideoSDK.destroyClient();
