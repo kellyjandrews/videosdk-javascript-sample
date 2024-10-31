@@ -24,27 +24,23 @@ This project is a JavaScript application that utilizes the VideoSDK to create vi
 
 Before you begin, ensure you have met the following requirements:
 
-- Node.js (version X.X.X or higher)
-- npm (version X.X.X or higher)
-- A VideoSDK account and API key
+- Node.js (version 20.10.0 or higher)
+- npm (version 10.9.0 or higher)
+- A Zoom VideoSDK developer account and API keys
 
 ## Installation
 
 1. Clone the repository:
 
-`git clone https://github.com/yourusername/videosdk-js-app.git
-`
+`git clone git@github.com:zoom/videosdk-js-sample.git`
 
 2. Navigate to the project directory:
 
+`cd videosdk-js-sample`
 
-`cd videosdk-js-app
-`
+1. Install the dependencies:
 
-3. Install the dependencies:
-
-`npm install
-`
+`npm install`
 
 ## Usage
 
@@ -52,12 +48,9 @@ Before you begin, ensure you have met the following requirements:
 
 2. Start the development server:
 
+`npm start`
 
-
-npm start
-
-
-3. Open your browser and navigate to `http://localhost:3000` (or the port you've configured).
+3. Open your browser and navigate to `http://localhost:3001?s=Subject&dn=DisplayName&r=1` (or the port you've configured).
 
 ## Using ngrok for External Access
 
@@ -69,43 +62,40 @@ If you need to make your local development server accessible from the internet (
 
 2. Authenticate ngrok (you only need to do this once):
 
-
-
-ngrok authtoken YOUR_AUTH_TOKEN
+`ngrok authtoken YOUR_AUTH_TOKEN`
 
 Replace `YOUR_AUTH_TOKEN` with the token provided in your ngrok dashboard.
 
 3. Start your local development server as usual:
 
+`npm start`
 
+1. In a new terminal window, start ngrok:
 
-npm start
+`ngrok http 3001`
 
+Replace with the port your app is running on if it's different than above.
 
-4. In a new terminal window, start ngrok:
-
-
-
-ngrok http 3000
-
-Replace `3000` with the port your app is running on if it's different.
-
-5. ngrok will provide a public URL (e.g., `https://1234abcd.ngrok.io`). You can use this URL to access your app from any device with internet access.
+1. ngrok will provide a public URL (e.g., `https://1234abcd.ngrok.io?s=Subject&dn=DisplayName&r=1`). You can use this URL to access your app from any device with internet access.
 
 Note: The free version of ngrok will generate a new URL each time you restart it. If you need a consistent URL, consider upgrading to a paid plan.
 
 ## Configuration
 
-Create a `.env` file in the root directory and add the following:
+Copy the `.env_copy` and save as `.env`.  It should look like the following:
 
-`VIDEOSDK_API_KEY=your_api_key_here VIDEOSDK_API_SECRET=your_api_secret_here
-`
+```
+ZOOM_SDK_KEY=''
+ZOOM_SDK_SECRET=''
+```
 
-Replace `your_api_key_here` and `your_api_secret_here` with your actual VideoSDK API key and secret.
+Replace with your actual VideoSDK API key and secret. 
+
+> **Important:** Do not store credentials in plain text on production environments.
 
 ## API Reference
 
-For detailed information about the VideoSDK API, please refer to the [official documentation](https://docs.videosdk.live/).
+For detailed information about the VideoSDK API, please refer to the[official documentation](https://developers.zoom.us/docs/video-sdk/web/).
 
 ## Contributing
 
